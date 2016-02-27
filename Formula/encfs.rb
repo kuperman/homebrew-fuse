@@ -23,6 +23,7 @@ class Encfs < Formula
 
   def install
     ENV.cxx11
+    inreplace "encfs/encfssh", "fusermount -u", "umount"
     system "make", "-f", "Makefile.dist"
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
